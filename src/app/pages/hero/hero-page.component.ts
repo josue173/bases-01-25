@@ -10,26 +10,23 @@ export class HeroPageComponent {
   getHeroDescription(nombre: string = 'Ironman', edad: number = 45): void {
     this.name.update(() => nombre);
     this.age.update(() => edad);
-    // return `${this.name()} - ${this.age()}`;
   }
 
   get heroDescription(): string {
     return `${this.name()} - ${this.age()}`;
   }
 
-  changeHero() {
+  changeHero(): void {
     this.getHeroDescription('Spiderman', 22);
   }
 
-  resetForm(edad: number = 45) {
-    if (edad === 45) {
-      this.getHeroDescription('Ironman', edad);
-    } else {
-      this.getHeroDescription(this.name(), edad);
-    }
+  resetForm(edad: number = 45): void {
+    edad === 45
+      ? this.getHeroDescription('Ironman', edad)
+      : this.getHeroDescription(this.name(), edad)
   }
 
-  changeAge() {
+  changeAge(): void {
     this.resetForm(60);
   }
 }
