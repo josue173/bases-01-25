@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 interface Character {
   id: number;
@@ -13,9 +13,8 @@ interface Character {
 })
 export class DragonballComponent {
   public characters = signal<Character[]>([
-    {id: 1, name: 'Hola1', power: 901},
-    {id: 2, name: 'Hola2', power: 801},
-    {id: 3, name: 'Hola3', power: 701}
+    { id: 1, name: 'Hola1', power: 901 },
+    { id: 2, name: 'Hola2', power: 801 },
+    { id: 3, name: 'Hola3', power: 701 },
   ]);
-
 }

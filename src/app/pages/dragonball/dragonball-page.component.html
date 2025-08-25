@@ -14,10 +14,13 @@
       @for (character of characters(); track character.id; let idx = $index) {
       <li>
         <span>{{ idx + 1 }} - {{ character.name }}</span>
-        <!-- <strong class="text-danger"> ({{ character.power }})</strong> -->
-        <strong [class.text-danger]="character.power > 900">
-          ({{ character.power }})</strong
+        <!-- <strong class="text-danger"> ({{ character.power }})</strong> --> <!-- normal -->
+        <strong
+          [class.text-danger]="character.power > 900"
+          [class.text-info]="character.power <= 900"
         >
+          ({{ character.power }})</strong
+        > <!-- clases condicionales -->
       </li>
       }
     </ul>
