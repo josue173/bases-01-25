@@ -2,27 +2,51 @@
 
 <section class="row">
   <div class="col-12 col-sm-6">
-    <h3>Agregar:</h3>
-    <input type="text" class="form-control" placeholder="Nombre" />
-    <input type="number" class="form-control mt-2" placeholder="Poder" />
-    <button class="mt-2 btn btn-primary">Agregar</button>
+    <h3>Agregar: {{ nombre() }}</h3>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre"
+      [value]="nombre()"
+      (input)="nombre.set(txtName.value)"
+      #txtName
+    />
+
+    <input
+      type="number"
+      class="form-control mt-2"
+      placeholder="Poder"
+      [value]="poder()"
+      (input)="poder.set(txtPoder.valueAsNumber)"
+      #txtPoder
+    />
+    <button class="mt-2 btn btn-primary" (click)="addCaracter()">
+      Agregar
+    </button>
   </div>
 
   <div class="col-12 col-sm-6">
     <h3>Listado</h3>
     <ul>
       @for (character of characters(); track character.id; let idx = $index) {
+      @if (character.power > 500) {
       <li>
         <span>{{ idx + 1 }} - {{ character.name }}</span>
-        <!-- <strong class="text-danger"> ({{ character.power }})</strong> --> <!-- normal -->
+        <!-- <strong class="text-danger"> ({{ character.power }})</strong> -->
+        <!-- normal -->
         <strong
           [class.text-danger]="character.power > 900"
           [class.text-info]="character.power <= 900"
         >
           ({{ character.power }})</strong
-        > <!-- clases condicionales -->
+        >
+        <!-- clases condicionales -->
       </li>
-      }
+      }@else {
+      <li>
+        <strong>No hay nada</strong>
+      </li>
+      } }
     </ul>
   </div>
 </section>
